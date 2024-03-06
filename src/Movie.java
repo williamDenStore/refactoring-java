@@ -1,1 +1,1 @@
-record Movie (String title, String code){}
+public record Movie (String title, String code){}

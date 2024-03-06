@@ -1,1 +1,1 @@
-record MovieRental (String movieId, int days){}
+public record MovieRental (String movieId, int days){}
