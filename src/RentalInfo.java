@@ -26,7 +26,7 @@ public class RentalInfo {
       }
       //print figures for this rental
       result.append("\t").append(movies.get(currentMovie).title()).append("\t").append(thisAmount).append("\n");
-      totalAmount = totalAmount + thisAmount;
+      totalAmount += thisAmount;
     }
     // add footer lines
     result.append("Amount owed is ").append(totalAmount).append("\n");
