@@ -11,34 +11,38 @@ public class RentalInfo {
 
     double totalAmount = 0;
     int frequentEnterPoints = 0;
-    String result = "Rental Record for " + customer.getName() + "\n";
-    for (MovieRental r : customer.getRentals()) {
+    String result = "Rental Record for " + customer.name() + "\n";
+    for (MovieRental movieRental : customer.rentals()) {
       double thisAmount = 0;
-
+      String currentMovie = movieRental.movieId();
       // determine amount for each movie
-      if (movies.get(r.getMovieId()).getCode().equals("regular")) {
+      if (movies.get(currentMovie).code().equals("regular")) {
         thisAmount = 2;
-        if (r.getDays() > 2) {
-          thisAmount = ((r.getDays() - 2) * 1.5) + thisAmount;
+        if (movieRental.days() > 2) {
+          thisAmount = ((movieRental.days() - 2) * 1.5) + thisAmount;
         }
       }
-      if (movies.get(r.getMovieId()).getCode().equals("new")) {
-        thisAmount = r.getDays() * 3;
+
+      if (movies.get(currentMovie).code().equals("new")) {
+        thisAmount = movieRental.days() * 3;
       }
-      if (movies.get(r.getMovieId()).getCode().equals("childrens")) {
+      if (movies.get(currentMovie).code().equals("childrens")) {
         thisAmount = 1.5;
-        if (r.getDays() > 3) {
-          thisAmount = ((r.getDays() - 3) * 1.5) + thisAmount;
+        if (movieRental.days() > 3) {
+          thisAmount = ((movieRental.days() - 3) * 1.5) + thisAmount;
         }
       }
 
       //add frequent bonus points
       frequentEnterPoints++;
       // add bonus for a two day new release rental
-      if (movies.get(r.getMovieId()).getCode() == "new" && r.getDays() > 2) frequentEnterPoints++;
+      if (movies.get(currentMovie).code().equals("new") && movieRental.days() > 2){
+        frequentEnterPoints++;
+      }
+
 
       //print figures for this rental
-      result += "\t" + movies.get(r.getMovieId()).getTitle() + "\t" + thisAmount + "\n";
+      result += "\t" + movies.get(currentMovie).title() + "\t" + thisAmount + "\n";
       totalAmount = totalAmount + thisAmount;
     }
     // add footer lines
