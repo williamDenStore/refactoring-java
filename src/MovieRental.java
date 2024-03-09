@@ -5,13 +5,12 @@ public final class MovieRental {
     private final int days;
 
     public MovieRental(String movieName, int days) {
-        Movie movie = switch (movieName) {
+        this.movie = switch (movieName) {
             case "Matrix", "You've Got Mail" -> new Movie(movieName, "regular");
             case "Cars" -> new Movie(movieName, "childrens");
             case "Fast & Furious X" -> new Movie(movieName, "new");
             default -> null;
         };
-        this.movie = movie;
         this.days = days;
     }
     public Movie movie() {
