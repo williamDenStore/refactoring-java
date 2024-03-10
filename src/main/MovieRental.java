@@ -7,12 +7,17 @@ public final class MovieRental {
     private final int days;
 
     public MovieRental(String movieName, int days) {
-        this.movie = switch (movieName) {
-            case "Matrix", "You've Got Mail" -> new Movie(movieName, "regular");
-            case "Cars" -> new Movie(movieName, "childrens");
-            case "Fast & Furious X" -> new Movie(movieName, "new");
-            default -> null;
-        };
+        if (movieName==null){
+            this.movie = null;
+        }
+        else {
+            this.movie = switch (movieName) {
+                case "Matrix", "You've Got Mail" -> new Movie(movieName, "regular");
+                case "Cars" -> new Movie(movieName, "childrens");
+                case "Fast & Furious X" -> new Movie(movieName, "new");
+                default -> null;
+            };
+        }
         this.days = days;
     }
     public Movie movie() {

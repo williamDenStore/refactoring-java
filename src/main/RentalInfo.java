@@ -7,7 +7,6 @@ public class RentalInfo {
 
   public String statement(Customer customer) {
     customer = filterOutNullMovies(customer);
-    System.out.println(customer.rentals().toString());
     double totalAmount = 0;
     int frequentEnterPoints = 0;
     StringBuilder result = new StringBuilder("Rental Record for " + customer.name() + "\n");
