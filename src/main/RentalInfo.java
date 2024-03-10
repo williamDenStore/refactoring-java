@@ -1,8 +1,13 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RentalInfo {
 
   public String statement(Customer customer) {
+    customer = filterOutNullMovies(customer);
+    System.out.println(customer.rentals().toString());
     double totalAmount = 0;
     int frequentEnterPoints = 0;
     StringBuilder result = new StringBuilder("Rental Record for " + customer.name() + "\n");
@@ -24,5 +29,16 @@ public class RentalInfo {
     result.append("Amount owed is ").append(totalAmount).append("\n");
     result.append("You earned ").append(frequentEnterPoints).append(" frequent points\n");
     return result.toString();
+  }
+
+  private static Customer filterOutNullMovies(Customer customer) {
+    List<MovieRental> rentals = new ArrayList<>();
+    for (int i = 0; i < customer.rentals().size(); i++) {
+      if (customer.rentals().get(i).movie() != null){
+        rentals.add(customer.rentals().get(i));
+      }
+    }
+    customer = new Customer(customer.name(), rentals);
+    return customer;
   }
 }

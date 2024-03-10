@@ -35,4 +35,12 @@ public class IntegrationTests {
         String result = new RentalInfo().statement(customer);
         assertEquals(expected, result);
     }
+    @Test
+    public void invalidMovieName(){
+        String expected = "Rental Record for C. U. Stomer\nAmount owed is 0.0\nYou earned 0 frequent points\n";
+        List<MovieRental> rentedMovies = List.of(new MovieRental("a",3));
+        Customer customer = new Customer("C. U. Stomer", rentedMovies);
+        String result = new RentalInfo().statement(customer);
+        assertEquals(expected, result);
+    }
 }
