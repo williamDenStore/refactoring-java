@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Objects;
 
 public final class MovieRental {
@@ -37,7 +39,7 @@ public final class MovieRental {
 
     @Override
     public String toString() {
-        return "MovieRental[" +
+        return "main.MovieRental[" +
                 "movie=" + movie + ", " +
                 "days=" + days + ']';
     }
