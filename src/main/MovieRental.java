@@ -49,6 +49,7 @@ public final class MovieRental {
                 "days=" + days + ']';
     }
     double calculatePrice(){
+        assert this.movie() != null;
         return switch (this.movie().code()) {
             case "regular" -> regularMoviePrice();
             case "new" -> newMoviePrice();
