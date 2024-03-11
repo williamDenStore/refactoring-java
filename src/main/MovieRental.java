@@ -7,17 +7,7 @@ public final class MovieRental {
     private final int days;
 
     public MovieRental(String movieName, int days) {
-        if (movieName==null){
-            this.movie = null;
-        }
-        else {
-            this.movie = switch (movieName) {
-                case "Matrix", "You've Got Mail" -> new Movie(movieName, "regular");
-                case "Cars" -> new Movie(movieName, "childrens");
-                case "Fast & Furious X" -> new Movie(movieName, "new");
-                default -> null;
-            };
-        }
+        this.movie = new Movie(movieName);
         this.days = days;
     }
     public Movie movie() {
@@ -49,7 +39,6 @@ public final class MovieRental {
                 "days=" + days + ']';
     }
     double calculatePrice(){
-        assert this.movie() != null;
         return switch (this.movie().code()) {
             case "regular" -> regularMoviePrice();
             case "new" -> newMoviePrice();

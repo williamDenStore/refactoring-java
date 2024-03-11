@@ -33,7 +33,7 @@ public class RentalInfo {
   private static Customer filterOutNullMovies(Customer customer) {
     List<MovieRental> rentals = new ArrayList<>();
     for (int i = 0; i < customer.rentals().size(); i++) {
-      if (customer.rentals().get(i).movie() != null){
+      if (customer.rentals().get(i).movie().code() != null){
         rentals.add(customer.rentals().get(i));
       }
     }
